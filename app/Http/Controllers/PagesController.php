@@ -25,13 +25,13 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $apply = Apply::create($this->validateRequest());
 
         Mail::to($apply->UserName)->send(new ApplyMail());
 
-        return back();
+        return redirect('/index');
     }
 
     private function validateRequest(){
@@ -41,7 +41,7 @@ class PagesController extends Controller
             'UserName' => 'required',
             'PhoneNumber' => 'required|numeric',
             'resumefile' => 'required|File',
-            'JobOrder.AdditionalInformation' => 'required',
+            'JobOrder_AdditionalInformation' => 'required',
         ]);
     }
 }

@@ -142,7 +142,22 @@
 <div class="container">
     <div class="row sub-body">
         <div class="col-md">
-<form  id="form-submit" enctype="multipart/form-data" method="post" action ="{{route('apply')}}"><input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="JobOrder_Id" name="JobOrder.Id" type="hidden" value="33681" /><input data-val="true" data-val-number="The field Division must be a number." data-val-required="The Division field is required." id="JobOrder_Division" name="JobOrder.Division" type="hidden" value="0" /><input data-val="true" data-val-number="The field CompanyId must be a number." data-val-required="The CompanyId field is required." id="JobOrder_CompanyId" name="JobOrder.CompanyId" type="hidden" value="0" /><input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="JobOrder_Owner_Id" name="JobOrder.Owner.Id" type="hidden" value="577427" /><input id="JobOrder_Owner_Name" name="JobOrder.Owner.Name" type="hidden" value="Joy Davis" /><input id="JobOrder_Owner_Email" name="JobOrder.Owner.Email" type="hidden" value="Joy.Davis@spencerreedgroup.com" /><input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="JobOrder_ResponseUser_Id" name="JobOrder.ResponseUser.Id" type="hidden" value="577427" /><input id="JobOrder_ResponseUser_Name" name="JobOrder.ResponseUser.Name" type="hidden" value="Joy Davis" /><input id="JobOrder_ResponseUser_Email" name="JobOrder.ResponseUser.Email" type="hidden" value="Joy.Davis@spencerreedgroup.com" /><input id="JobOrder_Title" name="JobOrder.Title" type="hidden" value="PERSONAL ASSISTANT TO PRESIDENT" /><input data-val="true" data-val-number="The field UserId must be a number." data-val-required="The UserId field is required." id="UserId" name="UserId" type="hidden" value="0" /><input id="JobOrder_Address_City" name="JobOrder.Address.City" type="hidden" value="Kansas City" /><input id="JobOrder_Address_State" name="JobOrder.Address.State" type="hidden" value="Missouri" /><input id="Source" name="Source" type="hidden" value="Website" /><input id="JobOrder_Category" name="JobOrder.Category" type="hidden" value="Other" />                    <div class="row">
+
+            {{-- add this to the form to connect it to the javascript at the bottom 
+                of the code id="form-submit" --}}
+<form enctype="multipart/form-data" method="post" action ="{{route('apply')}}">
+    @csrf
+    <input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="JobOrder_Id" name="JobOrder.Id" type="hidden" value="33681" />
+    <input data-val="true" data-val-number="The field Division must be a number." data-val-required="The Division field is required." id="JobOrder_Division" name="JobOrder.Division" type="hidden" value="0" />
+    <input data-val="true" data-val-number="The field CompanyId must be a number." data-val-required="The CompanyId field is required." id="JobOrder_CompanyId" name="JobOrder.CompanyId" type="hidden" value="0" />
+    <input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="JobOrder_Owner_Id" name="JobOrder.Owner.Id" type="hidden" value="577427" />
+    <input id="JobOrder_Owner_Name" name="JobOrder.Owner.Name" type="hidden" value="Joy Davis" />
+    <input id="JobOrder_Owner_Email" name="JobOrder.Owner.Email" type="hidden" value="Joy.Davis@spencerreedgroup.com" />
+    <input data-val="true" data-val-number="The field Id must be a number." data-val-required="The Id field is required." id="JobOrder_ResponseUser_Id" name="JobOrder.ResponseUser.Id" type="hidden" value="577427" />
+    <input id="JobOrder_ResponseUser_Name" name="JobOrder.ResponseUser.Name" type="hidden" value="Joy Davis" />
+    <input id="JobOrder_ResponseUser_Email" name="JobOrder.ResponseUser.Email" type="hidden" value="Joy.Davis@spencerreedgroup.com" />
+    <input id="JobOrder_Title" name="JobOrder.Title" type="hidden" value="PERSONAL ASSISTANT TO PRESIDENT" />
+    <input data-val="true" data-val-number="The field UserId must be a number." data-val-required="The UserId field is required." id="UserId" name="UserId" type="hidden" value="0" /><input id="JobOrder_Address_City" name="JobOrder.Address.City" type="hidden" value="Kansas City" /><input id="JobOrder_Address_State" name="JobOrder.Address.State" type="hidden" value="Missouri" /><input id="Source" name="Source" type="hidden" value="Website" /><input id="JobOrder_Category" name="JobOrder.Category" type="hidden" value="Other" />                    <div class="row">
                         <div class="col-md-4">
                             <p><b>JOB TITLE</b></p>
                             <p style="font-size:1.5em">PERSONAL ASSISTANT TO PRESIDENT</p>
@@ -192,7 +207,7 @@
 
                             <div class="form-group">
                                 <label for="AdditionalInformation">Additional Information (optional)</label>
-                                <textarea class="form-control" cols="20" id="JobOrder_AdditionalInformation" name="JobOrder.AdditionalInformation" rows="2" required>{{old('JobOrder.AdditionalInformation')}}
+                                <textarea class="form-control" cols="20" id="JobOrder_AdditionalInformation" name="JobOrder_AdditionalInformation" rows="2">{{old('JobOrder.AdditionalInformation')}}
 </textarea>
                             </div>
                             <p class="help-block">* Required</p>

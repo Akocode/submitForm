@@ -22,4 +22,4 @@ Route::get('/index', function () {
 });
 
 Route::get('/apply','PagesController@index');
-Route::post('/apply','PagesController@store')->name('apply');
+Route::post('/applys','PagesController@store')->name('apply');
