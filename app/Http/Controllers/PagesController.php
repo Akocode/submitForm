@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apply;
+use App\Mail\ApplyMail;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -26,6 +28,8 @@ class PagesController extends Controller
     public function store(Request $request)
     {
         $apply = Apply::create($this->validateRequest());
+
+        Mail::to($apply->UserName)->send(new ApplyMail());
 
         return back();
     }
