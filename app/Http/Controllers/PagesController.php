@@ -25,7 +25,7 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
 
         var_dump($request->all());
@@ -43,14 +43,14 @@ class PagesController extends Controller
         return redirect('/index');
     }
 
-    private function validateRequest(){
-        return request()->validate([
-            'FirstName' => 'required',
-            'LastName' => 'required',
-            'UserName' => 'required',
-            'PhoneNumber' => 'required|numeric',
-            'resumefile' => 'required|File',
-            'JobOrder_AdditionalInformation' => 'required',
-        ]);
-    }
+    // private function validateRequest(){
+    //     return request()->validate([
+    //         'FirstName' => 'required',
+    //         'LastName' => 'required',
+    //         'UserName' => 'required',
+    //         'PhoneNumber' => 'required|numeric',
+    //         'resumefile' => 'required|File',
+    //         'JobOrder_AdditionalInformation' => 'required',
+    //     ]);
+    // }
 }
