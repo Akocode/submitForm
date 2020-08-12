@@ -15,6 +15,7 @@
         <meta property="og:site_name" content="Spencer Reed Group">
         <meta property="og:image" content="https://www.spencerreed.com/content/img/logo.png">
         <meta property="og:title" content="SRG | Apply">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
     
         <link rel="apple-touch-icon" sizes="57x57" href="/content/img/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/content/img/apple-icon-60x60.png">
@@ -273,6 +274,16 @@
     
 
     <script type="text/javascript">
+     $.ajaxSetup({
+
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+}
+
+});
+$('form#form-submit').on('submit',function(event){
+    $('#procesing').show();
+})
     $('form#form-submit').on('submit',function(event){
         event.preventDefault();
         var data = new FormData();
@@ -284,7 +295,36 @@
         data.append('username', $('#UserName').val());
         data.append('number', $('#PhoneNumber').val());
         data.append('JobOrder_AdditionalInformation', $('#JobOrder_AdditionalInformation').val());
-        $('#procesing').show();
+      
+        $.ajax({
+            url: '/cinema/create-cinema/',
+            method: 'post',
+            data: data,
+            async: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                var resp = JSON.parse(JSON.stringify(data));
+                var status = resp.status;
+                $('#fds-cinema-btn').removeAttr('disabled');
+                $('#fds-cinema-btn').html('Save');
+                switch (status) {
+                    case 'success':
+                        geCinema();
+                        modal.modal('hide');
+                        break;
+                    case 'error':
+                        $('#fds-alert-holder').html(resp.message);
+                        break;
+                }
+            },
+            error: function (error) {
+                
+            }
+        });
 
         
     })

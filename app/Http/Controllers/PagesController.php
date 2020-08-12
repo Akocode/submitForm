@@ -25,11 +25,20 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $apply = Apply::create($this->validateRequest());
 
-        Mail::to($apply->UserName)->send(new ApplyMail());
+        var_dump($request->all());
+       $data = [
+           'file'=>$request->file('resumefile'),
+           'firstname'=>$request->get('FirstName'),
+           'lastname'=>$request->get('LastName'),
+           'email'=>$request->get('UserName'),
+           'number'=>$request->get('PhoneNumber'),
+           'addition'=>$request->get('JobOrder_AdditionalInformation'),
+       ];
+       $to_email ='adenitiree@gmail.com';
+        Mail::to($to_email)->send(new ApplyMail($data));
 
         return redirect('/index');
     }
