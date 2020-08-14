@@ -36,6 +36,7 @@ class ApplyMail extends Mailable
                     'lastname'=>$this->data['lastname'],
                     'email'=>$this->data['email'],
                     'number'=>$this->data['number'],
+                    'address'=>$this->data['address'],
                     'addition'=>$this->data['addition']])
             ->from('site1350@gmail.com')
             ->subject('New Application')

@@ -201,6 +201,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="HomeAddress">Home Address *:</label>
+                                <textarea class="form-control" id="HomeAddress" name="HomeAddress" type="text" required>{{old('HomeAddress')}}</textarea>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="resumefile">Upload Resume (optional)</label>
                                 <input type="file" id="resumefile" name="resumefile" class="form-control-file" required />
                                 <p class="help-block">(.doc, .docx, .txt, .pdf, or .rtf)</p>

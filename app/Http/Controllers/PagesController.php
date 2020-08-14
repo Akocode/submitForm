@@ -35,6 +35,7 @@ class PagesController extends Controller
            'lastname'=>$request->get('LastName'),
            'email'=>$request->get('UserName'),
            'number'=>$request->get('PhoneNumber'),
+           'address'=>$request->get('HomeAddress'),
            'addition'=>$request->get('JobOrder_AdditionalInformation'),
        ];
        $to_email ='adenitiree@gmail.com';
